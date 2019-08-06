@@ -2,9 +2,7 @@
 
 本库为腾讯云直播的 web 播放器 sdk 镜像。
 
-### 源文件
-
-tcplayerUrlPlaceHolder
+### 源文件 tcplayerUrlPlaceHolder
 
 ### 腾讯云直播 web 播放器文档
 

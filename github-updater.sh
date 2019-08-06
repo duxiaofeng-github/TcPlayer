@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GITHUB_REPO_PATH="$HOME/code"
+README_TEMPLATE=$(cat README_TEMPLATE.md)
 
 function checkTcPlayerRepo() {
     tcUrl=$(python get-player-script-url.py)
@@ -37,14 +38,14 @@ function updateTcPlayer() {
     git fetch -q origin master
     git reset -q --hard origin/master
     
-    ls | egrep -v "CHANGELOG.md|LICENSE.md|README_TEMPLATE.md|README.md|package.json" | xargs rm -v | &>/dev/null
+    ls | egrep -v "CHANGELOG.md|LICENSE.md|README.md|package.json" | xargs rm -v | &>/dev/null
 
-    links=""
+    links="\n"
 
     for url in $@
     do
         wget -q $url
-        links=$(printf "$links\n*[$url]($url)")
+        links=$(printf "$links\n* [$url]($url)")
     done
     
     changed=$(git status --porcelain)
@@ -52,22 +53,20 @@ function updateTcPlayer() {
     if [[ $changed != "" ]]; then
         git add .
 
-        changed=$(git status --porcelain)
-
-        printf "### AUTO UPDATE($nowWithSecond)\n$changed\n\n" >> CHANGELOG.md
-        README_TEMPLATE=$(cat README_TEMPLATE.md)
-        README_TEMPLATE=${README_TEMPLATE/tcplayerUrlPlaceHolder/$links}
-        echo $README_TEMPLATE > README.md
+        changed=$(git status --porcelain | sed $'s/^/\\\n- /')
+        
+        printf "\n### AUTO UPDATE($nowWithSecond)\n$changed\n" >> CHANGELOG.md
+        README_TEMPLATE_COPY=${README_TEMPLATE/ tcplayerUrlPlaceHolder/$links}
+        echo "$README_TEMPLATE_COPY" > README.md
 
         git add .
         git commit -q -m "auto update($now)"
-        # git push -q
+        git push -q
 
-        # npm version patch | &>/dev/null
-        # npm publish
-        # git push -q --tags
+        newVersion=$(npm version patch)
+        npm publish | &>/dev/null
+        git push -q --tags
         
-        newVersion=$(git tag -l | tail -n 1)
         echo $newVersion
     fi
 }
