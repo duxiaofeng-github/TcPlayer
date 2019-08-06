@@ -2,7 +2,7 @@
   "name": "tcplayer",
   "version": "0.0.7",
   "description": "腾讯云web播放器SDK",
-  "main": "TcPlayer.js",
+  "main": "tcplayer.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
