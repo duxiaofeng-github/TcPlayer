@@ -8,3 +8,9 @@ A  hls.min.0.12.4.js
 A  tcplayer.css
 A  tcplayer.min.js
 
+### AUTO UPDATE(2019-08-06 21:43:48)
+A  dash.all.min.2.9.3.js
+A  hls.min.0.12.4.js
+A  tcplayer.css
+A  tcplayer.min.js
+
