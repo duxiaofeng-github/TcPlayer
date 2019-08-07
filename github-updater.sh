@@ -3,11 +3,14 @@ GITHUB_REPO_PATH="$HOME"
 README_TEMPLATE=$(cat README_TEMPLATE.md)
 
 function initKey() {
-    keyPath="$HOME/.ssh/id_rsa"
+    keyDir="$HOME/.ssh"
+    keyPath="$keyDir/tcplayer_rsa"
+    sshConfigPath="$keyDir/config"
 
     if [[ ! -f $keyPath ]] && [[ $adk != "" ]]; then
         echo "$adk" > $keyPath
         chmod og-r $keyPath
+        printf "Host github.com\n  IdentityFile $keyPath" >> $sshConfigPath
     fi
 }
 
