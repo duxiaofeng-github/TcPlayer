@@ -1,5 +1,4 @@
 #!/bin/bash
-
 GITHUB_REPO_PATH="$HOME"
 README_TEMPLATE=$(cat README_TEMPLATE.md)
 
