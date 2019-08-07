@@ -4,14 +4,16 @@ README_TEMPLATE=$(cat README_TEMPLATE.md)
 
 function initKey() {
     keyDir="$HOME/.ssh"
-    keyPath="$keyDir/tcplayer_rsa"
+    privateKeyPath="$keyDir/tcplayer_rsa"
+    publicKeyPath="$keyDir/tcplayer_rsa.pub"
     sshConfigPath="$keyDir/config"
 
-    if [[ ! -f $keyPath ]] && [[ $adk != "" ]]; then
-        echo "$adk" > $keyPath
-        chmod og-rwx $keyPath
-        ssh-keygen -y -f $keyPath > "$keyPath.pub"
-        printf "Host github.com\n  IdentityFile $keyPath\n  PasswordAuthentication no" >> $sshConfigPath
+    if [[ ! -f $privateKeyPath ]] && [[ $adk != "" ]]; then
+        echo "$adk" > $privateKeyPath
+        echo "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAD96gADB8vfL8hUVLYSxcUuGF1bwl9LyunFcuFT3bMZMLcaqmCjhm1Y0trg/zolbLpjeKohojUkFfx23XmxbgBDEADoQ0wGBxNfPFXLJj6Q0SJ0St1DVsJchk8iIkXXmPM8B45oQY+fVnBc3HC2upLB15OQcLbZMANBPyPN4bHb98HuQQ== duxiaofeng@duxiaofengdeMacBook-Pro.local" > $publicKeyPath
+        chmod og-rwx $privateKeyPath
+        chmod og-rwx $publicKeyPath
+        printf "Host github.com\n  IdentityFile $privateKeyPath" >> $sshConfigPath
     fi
 }
 
