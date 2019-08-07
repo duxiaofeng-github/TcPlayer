@@ -66,6 +66,8 @@ function updateTcPlayer() {
 
         echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 
+        cat .npmrc
+
         npm publish
         git push -q --tags
         git push -q
