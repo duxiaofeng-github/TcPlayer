@@ -7,6 +7,5 @@ before_install:
   - chmod u=rw,og= ~/.ssh/tc_player
   - echo "Host github.com" >> ~/.ssh/config
   - echo "  IdentityFile ~/.ssh/tc_player" >> ~/.ssh/config
-  - npm install npm@latest -g
 
 script: ./github-updater.sh
