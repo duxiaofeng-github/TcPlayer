@@ -9,9 +9,8 @@ function initKey() {
 
     if [[ ! -f $keyPath ]] && [[ $adk != "" ]]; then
         echo "$adk" > $keyPath
-        chmod og-r $keyPath
+        chmod og-rwx $keyPath
         printf "Host github.com\n  IdentityFile $keyPath" >> $sshConfigPath
-        ll keyDir
     fi
 }
 
