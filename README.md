@@ -47,7 +47,7 @@ yarn add tcplayer@0.0.1
 
 ## 自动更新
 
-本库每天会做自动更新，检查源地址文件是否变更，变更则自动提交 commit，tag 自增，并自动发布到 [npm](https://www.npmjs.com/package/tcplayer) 。
+本库每天会使用 travis 做定时自动更新，检查源地址文件是否变更，变更则自动提交 commit，tag 自增，并自动发布到 [npm](https://www.npmjs.com/package/tcplayer) 。
 
 ## LICENSE
 
