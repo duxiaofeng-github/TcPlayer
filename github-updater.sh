@@ -3,16 +3,16 @@ GITHUB_REPO_PATH="$HOME"
 README_TEMPLATE=$(cat README_TEMPLATE.md)
 
 function checkTcPlayerRepo() {
-    tcUrl=$(python get-player-script-url.py)
+    jsUrl=$(python get-player-script-url.py)
 
-    if [[ $tcUrl == "" ]]; then
+    if [[ $jsUrl == "" ]]; then
         echo 'no url found'
         exit 0
     fi
 
     nowWithSecond=$(date +%Y\-%m\-%d\ %H\:%M\:%S)
 
-    changedVersion=$(updateTcPlayer $tcUrl)
+    changedVersion=$(updateTcPlayer $jsUrl)
 
     if [[ $changedVersion != "" ]]; then
         echo "$nowWithSecond, tags: $changedVersion"
@@ -53,16 +53,18 @@ function updateTcPlayer() {
         git add .
 
         changed=$(git status --porcelain | sed $'s/^/\\\n- /')
+
+        newVersion=$(echo $@ | awk -F '-' '{print $2}' | awk -F '.js' '{print $1}')
         
-        printf "\n### AUTO UPDATE($nowWithSecond)\n$changed\n" >> CHANGELOG.md
+        printf "\n### AUTO UPDATE VERSION $newVersion ($nowWithSecond)\n$changed\n" >> CHANGELOG.md
         README_TEMPLATE_COPY=${README_TEMPLATE/ tcplayerUrlPlaceHolder/$links}
         echo "$README_TEMPLATE_COPY" > README.md
 
         git add .
-        git commit -q -m "auto update($now)"
+        git commit -q -m "auto update $newVersion ($now)"
         git push -q
 
-        newVersion=$(npm version patch)
+        npm version $newVersion
 
         echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
 
