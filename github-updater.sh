@@ -13,9 +13,11 @@ function initKey() {
         # echo "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAD96gADB8vfL8hUVLYSxcUuGF1bwl9LyunFcuFT3bMZMLcaqmCjhm1Y0trg/zolbLpjeKohojUkFfx23XmxbgBDEADoQ0wGBxNfPFXLJj6Q0SJ0St1DVsJchk8iIkXXmPM8B45oQY+fVnBc3HC2upLB15OQcLbZMANBPyPN4bHb98HuQQ== duxiaofeng@duxiaofengdeMacBook-Pro.local" > $publicKeyPath
         chmod og-rwx $privateKeyPath
         # chmod og-rwx $publicKeyPath
+
+        ll -l $keyDir
         
-        eval `ssh-agent -s`
-        ssh-add -k $privateKeyPath
+        # eval `ssh-agent -s`
+        # ssh-add -k $privateKeyPath
 
         printf "Host github.com\n  IdentityFile $privateKeyPath" >> $sshConfigPath
     fi
