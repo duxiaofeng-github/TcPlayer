@@ -3,24 +3,26 @@ GITHUB_REPO_PATH="$HOME"
 README_TEMPLATE=$(cat README_TEMPLATE.md)
 
 function initKey() {
-    keyDir="$HOME/.ssh"
-    privateKeyPath="$keyDir/tcplayer_rsa"
+    # keyDir="$HOME/.ssh"
+    # privateKeyPath="$keyDir/tcplayer_rsa"
     # publicKeyPath="$keyDir/tcplayer_rsa.pub"
-    sshConfigPath="$keyDir/config"
+    # sshConfigPath="$keyDir/config"
 
-    if [[ ! -f $privateKeyPath ]] && [[ $adk != "" ]]; then
-        printf -- "$adk" >> $privateKeyPath
+    # if [[ ! -f $privateKeyPath ]] && [[ $adk != "" ]]; then
+        # printf -- "$adk" >> $privateKeyPath
         # echo "ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAD96gADB8vfL8hUVLYSxcUuGF1bwl9LyunFcuFT3bMZMLcaqmCjhm1Y0trg/zolbLpjeKohojUkFfx23XmxbgBDEADoQ0wGBxNfPFXLJj6Q0SJ0St1DVsJchk8iIkXXmPM8B45oQY+fVnBc3HC2upLB15OQcLbZMANBPyPN4bHb98HuQQ== duxiaofeng@duxiaofengdeMacBook-Pro.local" > $publicKeyPath
-        chmod og-rwx $privateKeyPath
+        # chmod og-rwx $privateKeyPath
         # chmod og-rwx $publicKeyPath
 
-        ll -l $keyDir
+        ls -l ~/.ssh
+
+        cat ~/.ssh/tc_player
         
         # eval `ssh-agent -s`
         # ssh-add -k $privateKeyPath
 
-        printf "Host github.com\n  IdentityFile $privateKeyPath" >> $sshConfigPath
-    fi
+        # printf "Host github.com\n  IdentityFile $privateKeyPath" >> $sshConfigPath
+    # fi
 }
 
 function checkTcPlayerRepo() {
@@ -48,7 +50,7 @@ function updateTcPlayer() {
     if [[ ! -d $TCPLAYER_REPO_PATH ]]; then
         mkdir -p $GITHUB_REPO_PATH
         cd $GITHUB_REPO_PATH
-        git clone https://github.com/duxiaofeng-github/TcPlayer.git
+        git clone -q git@github.com:duxiaofeng-github/TcPlayer.git
     fi
 
     now=$(date +%Y\-%m\-%d)
@@ -92,7 +94,7 @@ function updateTcPlayer() {
 }
 
 function main() {
-    # initKey
+    initKey
     checkTcPlayerRepo
 }
 
