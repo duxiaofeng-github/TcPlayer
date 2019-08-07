@@ -5,3 +5,7 @@
 ### AUTO UPDATE VERSION 2.3.1 (2019-08-07 21:48:30)
 
 - A  TcPlayer-2.3.1.js
+
+### AUTO UPDATE(2019-08-07 21:57:32)
+
+- A  TcPlayer-2.3.1.js
