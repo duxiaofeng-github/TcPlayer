@@ -7,6 +7,5 @@ before_install:
   - chmod u=rw,og= ~/.ssh/tc_player
   - echo "Host github.com" >> ~/.ssh/config
   - echo "  IdentityFile ~/.ssh/tc_player" >> ~/.ssh/config
-  - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
 
 script: ./github-updater.sh
