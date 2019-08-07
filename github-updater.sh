@@ -48,7 +48,7 @@ function updateTcPlayer() {
     if [[ ! -d $TCPLAYER_REPO_PATH ]]; then
         mkdir -p $GITHUB_REPO_PATH
         cd $GITHUB_REPO_PATH
-        git clone -q git@github.com:duxiaofeng-github/TcPlayer.git
+        git clone https://github.com/duxiaofeng-github/TcPlayer.git
     fi
 
     now=$(date +%Y\-%m\-%d)
@@ -92,7 +92,7 @@ function updateTcPlayer() {
 }
 
 function main() {
-    initKey
+    # initKey
     checkTcPlayerRepo
 }
 
