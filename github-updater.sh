@@ -50,21 +50,22 @@ function updateTcPlayer() {
     changed=$(git status --porcelain)
 
     if [[ $changed != "" ]]; then
-        git add .
+        # git add .
 
-        changed=$(git status --porcelain | sed $'s/^/\\\n- /')
+        # changed=$(git status --porcelain | sed $'s/^/\\\n- /')
         
-        printf "\n### AUTO UPDATE($nowWithSecond)\n$changed\n" >> CHANGELOG.md
-        README_TEMPLATE_COPY=${README_TEMPLATE/ tcplayerUrlPlaceHolder/$links}
-        echo "$README_TEMPLATE_COPY" > README.md
+        # printf "\n### AUTO UPDATE($nowWithSecond)\n$changed\n" >> CHANGELOG.md
+        # README_TEMPLATE_COPY=${README_TEMPLATE/ tcplayerUrlPlaceHolder/$links}
+        # echo "$README_TEMPLATE_COPY" > README.md
 
-        git add .
-        git commit -q -m "auto update($now)"
-        git push -q
+        # git add .
+        # git commit -q -m "auto update($now)"
+        # git push -q
 
         newVersion=$(npm version patch)
         npm publish | &>/dev/null
-        git push -q --tags
+        # git push -q
+        # git push -q --tags
         
         echo $newVersion
     fi
