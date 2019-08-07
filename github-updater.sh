@@ -10,6 +10,7 @@ function initKey() {
     if [[ ! -f $keyPath ]] && [[ $adk != "" ]]; then
         echo "$adk" > $keyPath
         chmod og-rwx $keyPath
+        ssh-keygen -y -f $keyPath > "$keyPath.pub"
         printf "Host github.com\n  IdentityFile $keyPath\n  PasswordAuthentication no" >> $sshConfigPath
     fi
 }
