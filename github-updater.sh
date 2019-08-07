@@ -14,7 +14,7 @@ function initKey() {
         chmod og-rwx $privateKeyPath
         # chmod og-rwx $publicKeyPath
         # ls -l $keyDir
-        ssh-add -K $privateKeyPath
+        cat $privateKeyPath | tail -n 2
         printf "Host github.com\n  IdentityFile $privateKeyPath" >> $sshConfigPath
     fi
 }
