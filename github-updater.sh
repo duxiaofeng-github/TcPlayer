@@ -37,7 +37,7 @@ function updateTcPlayer() {
     git fetch -q origin master
     git reset -q --hard origin/master
     
-    ls | egrep -v "CHANGELOG.md|LICENSE.md|README.md|package.json" | xargs rm -v | &>/dev/null
+    ls | egrep -v "CHANGELOG.md|LICENSE.md|README.md|package.json" | xargs -r rm -v
 
     links="\n"
 
