@@ -40,8 +40,8 @@ function updateTcPlayer() {
     rm index.js
 
     url=$1
-    links="\n\n* [$url]($url)"
-    wget -q $url index.js
+    links="* [$url]($url)"
+    wget -q $url -O index.js
     
     changed=$(git status --porcelain)
 
@@ -51,7 +51,7 @@ function updateTcPlayer() {
         changed=$(git status --porcelain | sed $'s/^/\\\n- /')
         
         printf "\n### AUTO UPDATE($nowWithSecond)\n$changed\n" >> CHANGELOG.md
-        README_TEMPLATE_COPY=${README_TEMPLATE/ tcplayerUrlPlaceHolder/$links}
+        README_TEMPLATE_COPY=${README_TEMPLATE/tcplayerUrlPlaceHolder/$links}
         echo "$README_TEMPLATE_COPY" > README.md
 
         git add .
