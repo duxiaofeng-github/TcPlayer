@@ -4,10 +4,7 @@
 
 ### 源文件
 
-* [https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css](https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css)
-* [https://imgcache.qq.com/open/qcloud/video/tcplayer/libs/hls.min.0.12.4.js](https://imgcache.qq.com/open/qcloud/video/tcplayer/libs/hls.min.0.12.4.js)
-* [https://imgcache.qq.com/open/qcloud/video/tcplayer/libs/dash.all.min.2.9.3.js](https://imgcache.qq.com/open/qcloud/video/tcplayer/libs/dash.all.min.2.9.3.js)
-* [https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js](https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js)
+* [https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.1.js](https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.1.js)
 
 ### 腾讯云直播 web 播放器文档
 
