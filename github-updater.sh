@@ -37,15 +37,11 @@ function updateTcPlayer() {
     git fetch -q origin master
     git reset -q --hard origin/master
     
-    ls | egrep -v "CHANGELOG.md|LICENSE.md|README.md|package.json" | xargs -r rm -v
+    rm index.js
 
-    links="\n"
-
-    for url in $@
-    do
-        wget -q $url
-        links=$(printf "$links\n* [$url]($url)")
-    done
+    url=$1
+    links="\n\n* [$url]($url)"
+    wget -q $url index.js
     
     changed=$(git status --porcelain)
 
@@ -54,7 +50,7 @@ function updateTcPlayer() {
 
         changed=$(git status --porcelain | sed $'s/^/\\\n- /')
 
-        newVersion=$(echo $@ | awk -F '-' '{print $2}' | awk -F '.js' '{print $1}')
+        newVersion=$(echo $url | awk -F '-' '{print $2}' | awk -F '.js' '{print $1}')
         
         printf "\n### AUTO UPDATE VERSION $newVersion ($nowWithSecond)\n$changed\n" >> CHANGELOG.md
         README_TEMPLATE_COPY=${README_TEMPLATE/ tcplayerUrlPlaceHolder/$links}
