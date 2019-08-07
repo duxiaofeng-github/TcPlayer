@@ -64,8 +64,12 @@ function updateTcPlayer() {
 
         newVersion=$(npm version patch)
         npm publish | &>/dev/null
-        git push -q
         git push -q --tags
+        git push -q
+
+        cat ./.npmrc
+
+        npm version
         
         echo $newVersion
     fi
