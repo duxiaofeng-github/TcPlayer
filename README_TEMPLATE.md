@@ -52,7 +52,7 @@ yarn add tcplayer@0.0.1
 
 ## CHANGELOG
 
-[CHANGELOG](./CHANGELOG)
+[CHANGELOG](./CHANGELOG.md)
 
 ## LICENSE
 
