@@ -1,6 +1,6 @@
 {
   "name": "tcplayer",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "腾讯云web播放器SDK",
   "main": "index.js",
   "scripts": {
