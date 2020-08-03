@@ -4,7 +4,7 @@
 
 ### 源文件
 
-* [https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.3.js](https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.3.js)
+* [https:https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.2.js](https:https://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.2.js)
 
 ### 腾讯云直播 web 播放器文档
 
